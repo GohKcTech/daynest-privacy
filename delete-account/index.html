@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daynest — Delete your account and data</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    margin: 0 auto; padding: 32px 20px 64px; max-width: 46rem;
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+    color: #1b1b1f; background: #fff;
+  }
+  h1 { font-size: 1.75rem; line-height: 1.25; margin: 0 0 1rem; }
+  h2 { font-size: 1.15rem; margin: 2.25rem 0 .6rem; }
+  h3 { font-size: 1rem; margin: 1.5rem 0 .4rem; }
+  hr { border: none; border-top: 1px solid #e3e3e8; margin: 2rem 0; }
+  a { color: #2f6f4e; }
+  code { background: #f2f2f5; padding: .1em .35em; border-radius: 4px; font-size: .9em; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+  th, td { border: 1px solid #e3e3e8; padding: .5rem .6rem; text-align: left; font-size: .95em; }
+  th { background: #f7f7f9; }
+  ul { padding-left: 1.25rem; }
+  @media (prefers-color-scheme: dark) {
+    body { color: #e6e1e5; background: #16161a; }
+    hr, th, td { border-color: #33333a; }
+    th { background: #1f1f25; }
+    code { background: #1f1f25; }
+    a { color: #7fd1a6; }
+  }
+</style>
+</head>
+<body>
+<h1>Deleting your Daynest account and data</h1>
+<p><strong>App:</strong> Daynest (<code>com.daynest.app</code>)
+<strong>Developer:</strong> Orvexa
+<strong>Contact:</strong> orvexa-support@googlegroups.com
+<strong>Last updated:</strong> 16 September 2026</p>
+<p>This page explains how to delete your Daynest account, how to delete only
+part of your data without closing your account, and exactly what is removed
+in each case.</p>
+<hr />
+<h2>Delete your whole account</h2>
+<p>You can do this yourself, inside the app:</p>
+<ol>
+<li>Open <strong>Daynest</strong> and sign in.</li>
+<li>Go to <strong>Settings</strong> (the last tab) &rarr; <strong>Account</strong>.</li>
+<li>Tap <strong>Delete account</strong> at the bottom of the page.</li>
+<li>Confirm in the dialog that appears.</li>
+<li>Sign in once more when asked. This is a security step required by the
+sign-in provider so that only the account owner can delete the account.</li>
+</ol>
+<p>The deletion runs immediately. When it finishes you are returned to the
+sign-in screen, and the account no longer exists.</p>
+<h3>If you cannot open the app</h3>
+<p>Email <a href="mailto:orvexa-support@googlegroups.com">orvexa-support@googlegroups.com</a>
+<strong>from the email address the account is registered under</strong>, with the
+subject <em>Delete my Daynest account</em>. We use the sending address to confirm
+ownership, and we reply within 30 days.</p>
+<hr />
+<h2>What gets deleted</h2>
+<p>Deleting the account removes all of the following:</p>
+<ul>
+<li><strong>Your sign-in account</strong> &mdash; the account held by Firebase
+Authentication, including the user ID, the email address, the display name,
+and, for email sign-ups, the stored password hash.</li>
+<li><strong>Your synced copy in the cloud</strong> &mdash; every record uploaded to
+Cloud Firestore under your account: transactions, categories, accounts,
+ledgers, budgets, reimbursement records, calendar events, tasks, reminders
+and notes.</li>
+<li><strong>The data on the device you are using</strong> &mdash; the local database
+is cleared and scheduled reminder notifications are cancelled.</li>
+</ul>
+<h3>What is kept, and for how long</h3>
+<ul>
+<li><strong>Nothing is kept by Daynest.</strong> We run no separate backups, no
+archive and no analytics store, so there is no additional retention period.
+The deletion is immediate and cannot be undone &mdash; we cannot restore an
+account or its records afterwards.</li>
+<li>Google operates Firebase Authentication and Cloud Firestore on our
+behalf. Residual copies may persist briefly inside Google&rsquo;s own
+infrastructure until its routine processes overwrite them; that is governed
+by <a href="https://policies.google.com/privacy">Google&rsquo;s privacy policy</a>,
+not by us, and such copies are not reachable by Daynest or by anyone else.</li>
+<li><strong>Other devices you installed Daynest on</strong> keep whatever is in
+their own local database until you open the app there, or uninstall it. The
+cloud copy is already gone, so nothing can be restored from it.</li>
+<li>Uninstalling the app <strong>does not</strong> delete a copy you previously
+synced. Use the in-app deletion above for that.</li>
+</ul>
+<hr />
+<h2>Delete only some of your data</h2>
+<p>You do not have to close your account to remove data. Everything you enter
+is editable and deletable inside the app:</p>
+<ol>
+<li>Open the record you want to remove &mdash; a transaction, category,
+account, ledger, budget, reimbursement record, calendar event, task or note.</li>
+<li>Tap <strong>Delete</strong> in the edit dialog and confirm.</li>
+</ol>
+<p>That removes it from the device straight away. To remove it from your
+cloud copy as well, open <strong>Settings &rarr; Account</strong> and tap
+<strong>Sync now</strong>: the sync replaces the stored copy with the current
+contents of your device, so deleted records disappear from the cloud too.</p>
+<p>If you would rather have us do it, email
+<a href="mailto:orvexa-support@googlegroups.com">orvexa-support@googlegroups.com</a>
+from the address on the account and tell us what to remove.</p>
+<hr />
+<h2>Related</h2>
+<p><a href="../">Daynest Privacy Policy</a> &mdash; what the app collects, where it
+is stored, and who else is involved.</p>
+</body>
+</html>
