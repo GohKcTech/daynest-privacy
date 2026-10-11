@@ -284,10 +284,10 @@ orvexa-support@googlegroups.com and we will reply within 30 days.</p>
 password: a Google or Apple password never reaches us at all, and a Daynest
 password goes straight to Firebase, which keeps only a hashed form of it.
 Data sent to Firebase and RevenueCat is encrypted in transit with TLS.
-Optional phone-to-phone attachment transfer uses a local Wi-Fi connection
-and a pairing code, without app-level transport encryption. Use a trusted
-network for that transfer. Your synced copy is restricted to your
-own account by server-side rules.</p>
+Optional phone-to-phone attachment transfer over local Wi-Fi is encrypted
+with a key derived from the pairing code. Use a trusted network for that
+transfer. Your synced copy is restricted to your own account by server-side
+rules.</p>
 <p>No system is perfectly secure. The local database on your phone is protected
 by your device's own lock and encryption, so please keep a screen lock on.</p>
 <hr />
