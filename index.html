@@ -33,7 +33,7 @@
 </head>
 <body>
 <h1>Daynest — Privacy Policy</h1>
-<p><strong>Last updated:</strong> 16 September 2026
+<p><strong>Last updated:</strong> 12 October 2026
 <strong>App:</strong> Daynest (<code>com.orvexa.daynest</code>)
 <strong>Contact:</strong> orvexa-support@googlegroups.com</p>
 <p>Daynest is a personal finance and planning app. This policy explains what
@@ -44,13 +44,16 @@ the app collects, where it is kept, and what you can do about it.</p>
 <li>Your records — transactions, amounts, notes, categories, accounts,
   budgets, calendar events, tasks and notes — are stored <strong>on your own
   device</strong>.</li>
-<li>They are uploaded to the cloud <strong>only when you tap "Sync now" yourself.</strong>
-  There is no background or automatic upload.</li>
+<li>With <strong>Pro</strong>, your records are uploaded to the cloud <strong>only when you tap
+  "Sync now" yourself.</strong> There is no background or automatic record upload.</li>
 <li>Receipt photos are read <strong>on your device</strong> and are never uploaded.</li>
-<li>There are <strong>no analytics, no advertising, and no third-party trackers</strong> in
-  this app.</li>
-<li>You can delete your account and everything stored for it from inside the
-  app.</li>
+<li>There are <strong>no advertising or app-usage analytics SDKs</strong> in this app.
+  Subscriptions are handled by Google Play and RevenueCat, which process your
+  purchase information (see section 2.4). Google's on-device text-recognition
+  library may send technical diagnostics to Google (see section 2.5).</li>
+<li>You can delete your Daynest account and synced records inside the app.
+  Store purchase history and RevenueCat records have separate deletion rules
+  (see section 6).</li>
 </ul>
 <hr />
 <h2>2. What we collect</h2>
@@ -96,26 +99,62 @@ Android — the on-device version, bundled inside the app).</p>
 <p>The image is <strong>not uploaded anywhere and is not stored by Daynest</strong>. Only the
 text values you confirm and save — such as the amount and the date — become
 part of your records.</p>
-<h3>2.4 What we do not collect</h3>
+<h3>2.4 Purchases and subscriptions</h3>
+<p>Plus and Pro are monthly or yearly auto-renewing subscriptions through
+<strong>Google Play Billing</strong>. Eligible new subscribers can receive a 7-day free
+trial. Google processes payment; Daynest never receives your card number
+or other payment-method details.</p>
+<p><strong>RevenueCat, Inc.</strong> manages subscription status, purchase verification and
+restoring access. When you sign in, Daynest sends your Firebase Authentication
+user ID to RevenueCat as your customer ID. Before sign-in, the SDK may create
+an anonymous customer ID. Daynest does not send your ledger records, receipt
+images or account email to RevenueCat for billing.</p>
+<p>Google Play and RevenueCat process purchase information such as the product,
+purchase token, purchase and expiry times, price and currency, transaction
+country, and renewal or cancellation status. Play's real-time developer
+notifications help RevenueCat keep subscription status up to date. The SDK
+also processes technical app and device information, such as app and OS
+versions, device type/model and locale. RevenueCat may derive a country from
+your IP address; this is separate from accessing GPS or precise location.
+These services may communicate when the app starts or subscription status
+refreshes, without you tapping "Sync now". This does not upload your records.</p>
+<p>Daynest stores the last known subscription tier locally, per account, in
+SharedPreferences so paid features can remain available offline. RevenueCat
+also maintains its own SDK cache.</p>
+<h3>2.5 What we do not collect</h3>
 <p>Daynest does not collect or use:</p>
 <ul>
-<li>your location,</li>
+<li>your GPS or precise location,</li>
 <li>your contacts, calendar (the system one), call log or messages,</li>
 <li>advertising identifiers,</li>
-<li>analytics or usage statistics,</li>
-<li>crash reports.</li>
+<li>general app-usage analytics or advertising profiles,</li>
+<li>app crash reports through a crash-reporting SDK.</li>
 </ul>
-<p>There are no advertising SDKs and no third-party analytics SDKs in this app.</p>
+<p>There are no advertising SDKs or general app-usage analytics SDKs in this app.
+Subscription reporting by RevenueCat is separate from tracking how you use
+your finance records. Google's Android ML Kit SDK may collect technical
+information, installation identifiers and performance or feature events for
+SDK diagnostics and usage analytics. Receipt images and recognized text
+remain on-device during recognition; only values you save may later be synced.</p>
 <hr />
 <h2>3. Where your data is stored</h2>
 <h3>3.1 On your device</h3>
-<p>By default, everything stays in a local database on your phone. If you never
-sync, nothing you enter leaves your device.</p>
-<h3>3.2 Cloud sync — only when you ask for it</h3>
-<p>Daynest has a <strong>manual</strong> sync. When you open the account screen and tap
+<p>By default, your finance and planning records stay in a local database on
+your phone. Subscription status is cached separately as described in section
+2.4. Sign-in, account profile creation and subscription services still use the
+network even if you never sync your records. Firebase also holds an account
+profile (your user ID, email and signup time).</p>
+<p>If you choose to export a backup or transfer attachment photos to another
+phone over local Wi-Fi, those records or photos leave this device at your
+request. Attachment photos are not part of cloud sync; cloud photo storage
+is not available in v2.</p>
+<h3>3.2 Cloud sync — Pro, only when you ask for it</h3>
+<p>Daynest has a <strong>manual</strong> sync for <strong>Pro</strong> subscribers. When you open the
+account screen and tap
 <strong>"Sync now"</strong>, a copy of your records is sent to Google Firebase (Cloud
 Firestore) and stored under your own account, so you can restore it or move
-to another device.</p>
+to another device. It is stored under <code>users/{uid}</code>, where <code>uid</code> is your
+Firebase user ID.</p>
 <ul>
 <li>Sync never runs on its own, on a schedule, or in the background.</li>
 <li>The copy is stored in an area private to your account and is not readable
@@ -141,7 +180,17 @@ to another device.</p>
 <tr>
 <td>Cloud Firestore</td>
 <td>Google</td>
-<td>to hold your synced copy</td>
+<td>to hold your account profile and, if you use Pro sync, your synced copy</td>
+</tr>
+<tr>
+<td>Google Play Billing</td>
+<td>Google</td>
+<td>to process subscription purchases, renewals, cancellations and refunds</td>
+</tr>
+<tr>
+<td>RevenueCat</td>
+<td>RevenueCat, Inc.</td>
+<td>to verify purchases, manage subscription access, restore purchases and provide subscription reporting</td>
 </tr>
 <tr>
 <td>Google Sign-In</td>
@@ -155,22 +204,29 @@ to another device.</p>
 </tr>
 </tbody>
 </table>
-<p>These providers act on our behalf as processors. We do not sell your data,
+<p>Firebase and RevenueCat process data for our app; Google Play and sign-in
+providers also handle their own accounts and services. We do not sell your data,
 and we do not share it with anyone for advertising or marketing.</p>
 <p>Their own policies apply to what they do:
-Google — https://policies.google.com/privacy ·
-Apple — https://www.apple.com/legal/privacy/</p>
+<a href="https://policies.google.com/privacy">Google privacy policy</a> ·
+<a href="https://www.revenuecat.com/privacy-policy">RevenueCat privacy policy</a> ·
+<a href="https://www.apple.com/legal/privacy/">Apple privacy policy</a></p>
+<p>Google's <a href="https://developers.google.com/ml-kit/android-data-disclosure">ML Kit data disclosure</a>
+explains the technical data its Android SDK processes.</p>
 <h3>3.4 Where in the world</h3>
 <p>Your synced copy is stored in Google's <strong>Singapore</strong> region
 (<code>asia-southeast1</code>). Sign-in accounts are held by Firebase Authentication,
 which Google may operate from data centres in other countries. Google applies
-its own safeguards to such transfers.</p>
+its own safeguards to such transfers. RevenueCat describes storage in the
+United States in its privacy policy. Subscription processing is not limited
+to the Firestore sync region.</p>
 <hr />
 <h2>4. Why we are allowed to hold it</h2>
 <p>Where the GDPR or a similar law applies to you:</p>
 <ul>
 <li><strong>Performance of a contract</strong> — we need your account information and your
-  records to give you the app you asked for.</li>
+  records to give you the app you asked for, and purchase information to
+  provide and restore the subscription you choose.</li>
 <li><strong>Consent</strong> — receipt scanning uses your camera or photos only after you
   allow it, and sync only runs when you press the button. You can withdraw
   either at any time, by revoking the permission in your system settings or
@@ -180,8 +236,16 @@ its own safeguards to such transfers.</p>
 <h2>5. How long we keep it</h2>
 <ul>
 <li><strong>On your device:</strong> until you delete the record, or delete the app.</li>
-<li><strong>In the cloud:</strong> until you replace it with a newer sync, or delete your
-  account.</li>
+<li><strong>In Firestore:</strong> your synced records stay until replaced through sync or
+  removed through account deletion. If Pro expires, sync stops but existing
+  local and cloud records are kept; account deletion remains available at
+  every tier.</li>
+<li><strong>Local subscription cache:</strong> the last known tier stays in local app
+  preferences until updated or app data is cleared. Deleting the Daynest
+  account does not explicitly clear this per-account cache.</li>
+<li><strong>Subscription records:</strong> Google and RevenueCat retain records under their
+  own policies, including where needed for accounting, refunds, disputes or
+  legal obligations. We do not set a fixed retention period for their records.</li>
 </ul>
 <hr />
 <h2 id="delete-account">6. Deleting your account and your data</h2>
@@ -189,7 +253,19 @@ its own safeguards to such transfers.</p>
 page: <a href="delete-account/">Deleting your Daynest account and data</a>.</p>
 <p>Open <strong>Account → Delete account</strong> in the app. You will be asked to sign in
 again to confirm it is you. Daynest then deletes your synced copy and your
-sign-in account.</p>
+sign-in account, regardless of whether you have Free, Plus or Pro. The current
+app removes the Firestore sync snapshot and replaces the account profile with
+a minimal deletion marker to prevent other devices from uploading again.
+The marker holds only your user ID and a "deleted" flag; email us if you
+want it removed as well.</p>
+<p><strong>Deleting your Daynest account does not cancel a Google Play subscription.</strong>
+Cancel it in Google Play's subscription management screen if you do not want
+it to renew. Daynest cannot erase Google's purchase history.</p>
+<p>The current account-deletion flow does <strong>not</strong> delete the RevenueCat customer
+record; signing out is not deletion. To request removal of that record, email
+orvexa-support@googlegroups.com. We can request or carry out customer deletion
+through RevenueCat, subject to any records it must retain. This does not
+remove Google's purchase history or cancel your subscription.</p>
 <p>Deleting the app alone does <strong>not</strong> delete a copy you previously synced — use
 the in-app deletion for that.</p>
 <p>If you cannot reach the in-app option, email orvexa-support@googlegroups.com from the
@@ -207,7 +283,10 @@ orvexa-support@googlegroups.com and we will reply within 30 days.</p>
 <p>Sign-in is handled by Firebase Authentication. We never see or store your
 password: a Google or Apple password never reaches us at all, and a Daynest
 password goes straight to Firebase, which keeps only a hashed form of it.
-Data in transit is encrypted with TLS. Your synced copy is restricted to your
+Data sent to Firebase and RevenueCat is encrypted in transit with TLS.
+Optional phone-to-phone attachment transfer uses a local Wi-Fi connection
+and a pairing code, without app-level transport encryption. Use a trusted
+network for that transfer. Your synced copy is restricted to your
 own account by server-side rules.</p>
 <p>No system is perfectly secure. The local database on your phone is protected
 by your device's own lock and encryption, so please keep a screen lock on.</p>

@@ -36,7 +36,7 @@
 <p><strong>App:</strong> Daynest (<code>com.orvexa.daynest</code>)
 <strong>Developer:</strong> Orvexa
 <strong>Contact:</strong> orvexa-support@googlegroups.com
-<strong>Last updated:</strong> 16 September 2026</p>
+<strong>Last updated:</strong> 12 October 2026</p>
 <p>This page explains how to delete your Daynest account, how to delete only
 part of your data without closing your account, and exactly what is removed
 in each case.</p>
@@ -53,6 +53,11 @@ sign-in provider so that only the account owner can delete the account.</li>
 </ol>
 <p>The deletion runs immediately. When it finishes you are returned to the
 sign-in screen, and the account no longer exists.</p>
+<p><strong>Deleting your account does not cancel a Plus or Pro
+subscription.</strong> Google Play bills subscriptions, not Daynest. Cancel
+it first in the Google Play Store app &rarr; <strong>Payments &amp;
+subscriptions</strong> &rarr; <strong>Subscriptions</strong>, or it will keep
+renewing.</p>
 <h3>If you cannot open the app</h3>
 <p>Email <a href="mailto:orvexa-support@googlegroups.com">orvexa-support@googlegroups.com</a>
 <strong>from the email address the account is registered under</strong>, with the
@@ -74,10 +79,25 @@ is cleared and scheduled reminder notifications are cancelled.</li>
 </ul>
 <h3>What is kept, and for how long</h3>
 <ul>
-<li><strong>Nothing is kept by Daynest.</strong> We run no separate backups, no
-archive and no analytics store, so there is no additional retention period.
-The deletion is immediate and cannot be undone &mdash; we cannot restore an
-account or its records afterwards.</li>
+<li><strong>Daynest keeps no copy of your records.</strong> We run no separate
+backups, no archive and no analytics store. The deletion is immediate and
+cannot be undone &mdash; we cannot restore an account or its records
+afterwards.</li>
+<li><strong>A deletion marker.</strong> To stop another signed-in device from
+uploading your records again, an empty entry holding only your user ID and a
+&ldquo;deleted&rdquo; flag stays in Cloud Firestore. It contains no email,
+name or records. Email us if you want it removed as well.</li>
+<li><strong>Purchase records.</strong> If you ever subscribed, Google Play
+keeps your purchase history under
+<a href="https://policies.google.com/privacy">Google&rsquo;s privacy policy</a>,
+and our subscription provider RevenueCat keeps a customer record (your user ID,
+the products bought, dates, price and country) for accounting, refunds and
+legal obligations under the
+<a href="https://www.revenuecat.com/privacy-policy">RevenueCat privacy policy</a>.
+Deleting your account does not remove these. To ask us to delete the
+RevenueCat record, email
+<a href="mailto:orvexa-support@googlegroups.com">orvexa-support@googlegroups.com</a>;
+we cannot delete Google&rsquo;s purchase history.</li>
 <li>Google operates Firebase Authentication and Cloud Firestore on our
 behalf. Residual copies may persist briefly inside Google&rsquo;s own
 infrastructure until its routine processes overwrite them; that is governed
@@ -101,7 +121,9 @@ account, ledger, budget, reimbursement record, calendar event, task or note.</li
 <p>That removes it from the device straight away. To remove it from your
 cloud copy as well, open <strong>Settings &rarr; Account</strong> and tap
 <strong>Sync now</strong>: the sync replaces the stored copy with the current
-contents of your device, so deleted records disappear from the cloud too.</p>
+contents of your device, so deleted records disappear from the cloud too.
+Cloud sync requires a Pro subscription; without Pro, email us or delete your
+account to remove records from the cloud copy.</p>
 <p>If you would rather have us do it, email
 <a href="mailto:orvexa-support@googlegroups.com">orvexa-support@googlegroups.com</a>
 from the address on the account and tell us what to remove.</p>
